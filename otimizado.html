@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Starry Sky Animation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: black;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .star {
+      position: absolute;
+      bottom: 0;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: rise infinite linear;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-150vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div style="width: 100%; display: flex; justify-content: center; height: 100%; align-items: center;">
+    <h1 style="color: #40BDF8; font-size: 3rem; font-family: Arial;">
+      Andromeda
+      <span style="color: white">Galaxy</span>
+      <p style="font-size: 1rem; color: #D3D0CE; margin-top: 2rem; 
+        font-family: 'Times New Roman', Times, serif; width: 100%; text-align: center;">
+        Marcos Vini
+      </p>
+    </h1>
+  </div>
+
+  <script>
+    const maxStars = 100; // Limite de estrelas
+    const stars = [];
+
+    function createStar() {
+      if (stars.length >= maxStars) return; // Limite de estrelas
+
+      const star = document.createElement('div');
+      star.classList.add('star');
+
+      // Tamanho aleatório da estrela (entre 1px e 3px)
+      const size = Math.random() * 2 + 1;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+
+      // Posição horizontal aleatória
+      star.style.left = `${Math.random() * 100}vw`;
+
+      // Duração e delay da animação
+      const duration = Math.random() * 150 + 3;
+      const delay = Math.random() * 3;
+      star.style.animationDuration = `${duration}s`;
+      star.style.animationDelay = `${delay}s`;
+
+      document.body.appendChild(star);
+      stars.push(star);
+
+      // Reutiliza a estrela após a animação, em vez de removê-la
+      setTimeout(() => {
+        star.style.left = `${Math.random() * 100}vw`; // Reposiciona
+        star.style.animationDuration = `${Math.random() * 150 + 3}s`; // Nova duração
+        star.style.animationDelay = `${Math.random() * 3}s`; // Novo delay
+      }, duration * 1000);
+    }
+
+    function animateStars() {
+      createStar();
+      requestAnimationFrame(animateStars); // Mecanismo mais eficiente para animação
+    }
+
+    // Iniciar a animação
+    animateStars();
+  </script>
+</body>
+</html>
