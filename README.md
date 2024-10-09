@@ -1,2 +1,2 @@
 
-<img src="https://github.com/marcoscode404/desafios-com-python/blob/bc4332ed2942ca3022447a9ee263013158da1ad4/hitesh-choudhary-D9Zow2REm8U-unsplash.jpg"   width="100%" height="400">
+<img src="https://github.com/marcoscode404/galaxy/blob/main/Captura%20de%20tela%20de%202024-10-09%2012-56-48.png"   width="100%" height="400">
